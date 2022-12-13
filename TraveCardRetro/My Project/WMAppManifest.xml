@@ -3,6 +3,8 @@
   <DefaultLanguage xmlns="" code="zh-CN" />
   <Languages xmlns="">
     <Language code="zh-CN" />
+    <Language code="zh-TW" />
+    <Language code="zh-Hant" />
   </Languages>
   <App xmlns="" ProductID="{afa44bf3-652d-4459-b603-cd92d884cb67}" Title="通信大数据行程卡" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="PC-DOS Workshop" Description="通信大数据行程卡（怀旧版）" Publisher="PC-DOS Workshop" PublisherID="{e25bdc02-7775-44ef-b9d4-b5b1e8bbc531}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
@@ -17,7 +19,7 @@
           <SmallImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileSmall.png</SmallImageURI>
           <Count>0</Count>
           <BackgroundImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileMedium.png</BackgroundImageURI>
-          <Title>TraveCardRetro</Title>
+          <Title>通信大数据行程卡</Title>
           <BackContent>
           </BackContent>
           <BackBackgroundImageURI>
