@@ -1,0 +1,111 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="TraveCardRetro.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:imagetools="clr-namespace:ImageTools.Controls;assembly=ImageTools.Controls"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait" 
+    shell:SystemTray.IsVisible="False">
+    
+    <phone:PhoneApplicationPage.Resources>
+        <imagetools:ImageConverter x:Key="ImageResourceArrow" />
+    </phone:PhoneApplicationPage.Resources>
+
+    <!--LayoutRoot 是放置所有頁面的根資料格-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- 當地語系化注意事項: 
+            若要將顯示的字串當地語系化，請將其值複製到應用程式的中性語言資源檔
+            (AppResources.resx) 中已適當命名的機碼，然後
+            將屬性的引號之間硬式編碼的文字值取代
+            為其路徑指向該字串名稱的繫結子句。
+
+            例如: 
+
+                Text="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}"
+
+            此繫結指向範本中名為 "ApplicationTitle" 的字串資源。
+
+            在 [專案屬性] 索引標籤中加入支援的語言將為
+            每種能承載 UI 字串翻譯值的每一種語言建立一個
+            新的 resx 檔案。這些範例中的繫結將導致在執行時從
+            與應用程式的 CurrentUICulture 相符的 .resx 檔案中
+            取得屬性的值。
+         -->
+
+        <!--ContentPanel - 其他內容置於此-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Background="#FFEEEEEE">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Source="/Assets/LocationHistoryUIAssets/TitleBar.png" VerticalAlignment="Top" Height="50"/>
+                <Image Grid.Column="1" Source="/Assets/SharedAssets.Alipay/TitleBlank.png" Stretch="Fill" VerticalAlignment="Top" Height="50" Margin="-10,0,0,0"/>
+                <Image Grid.Column="2" Source="/Assets/SharedAssets.Alipay/Buttons2.png" VerticalAlignment="Top" Height="50"/>
+            </Grid>
+            <TextBlock Grid.Row="1" HorizontalAlignment="Center" Text="网页由 zfbxcx.gjzwfw.gov.cn 提供" Foreground="#FF9B9B9B" VerticalAlignment="Top" Margin="0,5,0,0" FontSize="15" Visibility="Collapsed" />
+            <ScrollViewer Grid.Row="1" VerticalAlignment="Top">
+                <StackPanel Orientation="Vertical">
+                    <Grid Width="480">
+                        <Image Source="/Assets/LocationHistoryUIAssets/DataArea.Top.png" Width="480" Stretch="UniformToFill"/>
+                        <Image x:Name="btnBack" Source="/Assets/LocationHistoryUIAssets/BackButton.png" VerticalAlignment="Top" HorizontalAlignment="Right" Width="66" Margin="0" Visibility="Collapsed" />
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,200,0,0">
+                            <TextBlock x:Name="txtPhoneNumber" Text="000****0000" Foreground="#FF46464C" FontSize="20" FontWeight="Bold"/>
+                            <TextBlock Text="的动态行程卡" Foreground="#FF46464C" FontSize="20" FontWeight="Bold"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtUpdateTime" Text="更新于：2020.00.00 00:00:00" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FF94949E" Margin="0,248,0,0" FontSize="19"/>
+                        <imagetools:AnimatedImage x:Name="imgArrow" Source="{Binding ImageSource, Converter={StaticResource ImageResourceArrow}}" Width="225" Height="225" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,285,0,0"/>
+                    </Grid>
+                    <Grid Width="480">
+                        <Image Source="/Assets/LocationHistoryUIAssets/DataArea.Middle.png" Width="480" Margin="0,-5" Stretch="Fill"/>
+                        <TextBlock x:Name="txtLocationHistory" HorizontalAlignment="Center" VerticalAlignment="Top" Width="370" Margin="0,0,0,0" TextWrapping="Wrap" FontSize="18">
+                        	<Run x:Name="trnLocHistPrefix" Foreground="#FF94949E" Text="您于前7天内到达或途经："/>
+                        	<Run x:Name="trnLocHistData" Foreground="Black" Text="江苏省苏州市"/>
+                        </TextBlock>
+                    </Grid>
+                    <Grid Width="480">
+                        <Image Source="/Assets/LocationHistoryUIAssets/DataArea.Bottom.png" Width="480" UseLayoutRounding="True" Stretch="UniformToFill"/>
+                        <TextBlock Text="结果包含您在前7天内到访的国家（地区）与停留4小时以上的国内城市" VerticalAlignment="Top" Foreground="White" HorizontalAlignment="Center" FontSize="13" Margin="0,29,0,0"/>
+                        <TextBlock Text="色卡仅对到访地作提醒，不关联健康状况" VerticalAlignment="Top" Foreground="White" HorizontalAlignment="Center" FontSize="13" Margin="0,49,0,0"/>
+                    </Grid>
+                    <Grid Width="480">
+                        <Image Source="/Assets/LocationHistoryUIAssets/ButtomBar.png" Width="480" Visibility="Collapsed"/>
+                    </Grid>
+                </StackPanel>
+            </ScrollViewer>
+            <Grid Grid.Row="2" VerticalAlignment="Bottom" Background="#FFF8F8F8">
+                <Grid Width="480">
+                    <Image Source="/Assets/LocationHistoryUIAssets/ButtomBar.png" Width="480"/>
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <!--取消註解以查看對齊格線，協助確保您的控制項
+            皆對齊共同的邊界。當影像在系統匣中顯示時的
+            上方邊界為 -32px。如果隱藏了系統匣，則將此值設為 0
+            (或完全移除邊界)。
+
+            在送出之前請移除此 XAML 和影像本身。-->
+        <!--<Image Source="/Assets/AlignmentGrid.png" VerticalAlignment="Top" Height="800" Width="480" Margin="0,-32,0,0" Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False" />-->
+    </Grid>
+
+</phone:PhoneApplicationPage>
